@@ -1,21 +1,25 @@
-# rn-skeletons 💀📱
+# 💀 rn-skeletons
 
-# REACT NAITVE SKELETONS
+A powerful, highly customizable skeleton loading library for React Native applications.
 
-[![npm version](https://img.shields.io/npm/v/rn-skeletons.svg)](https://www.npmjs.com/package/rn-skeletons)
-[![Downloads](https://img.shields.io/npm/dm/rn-skeletons.svg)](https://www.npmjs.com/package/rn-skeletons)
-[![License](https://img.shields.io/npm/l/rn-skeletons.svg)](https://github.com/yourusername/rn-skeletons/blob/main/LICENSE)
+## 📸 Preview
 
-A lightweight, highly customizable React Native skeleton loading library for creating beautiful loading states in mobile applications.
+<div style="display: flex; justify-content: space-around;">
+  <img src="https://example.com/skeleton-text.gif" width="200" alt="Text Skeleton" />
+  <img src="https://example.com/skeleton-image.gif" width="200" alt="Image Skeleton" />
+  <img src="https://example.com/skeleton-carousel.gif" width="200" alt="Carousel Skeleton" />
+</div>
 
-## ✨ Features
+## 🚀 Features
 
-- 🚀 Lightweight and zero dependencies
-- 🎨 Fully customizable skeleton components
-- 📱 100% React Native compatibility
-- 🔄 Smooth shimmer animations
-- 💪 TypeScript support
-- 🌈 Multiple shape and styling options
+- 🎨 Fully Customizable Components
+- 🔬 Multiple Skeleton Types
+- 🌈 Advanced Animation Options
+- 📱 Responsive Design
+- ♿ Accessibility Support
+- 💨 Lightweight & Performance-Optimized
+- 🌓 Dark/Light Mode Compatible
+- 🔄 Multiple Animation Types
 
 ## 📦 Installation
 
@@ -23,125 +27,254 @@ A lightweight, highly customizable React Native skeleton loading library for cre
 npm install rn-skeletons
 # or
 yarn add rn-skeletons
+# or
+pnpm add rn-skeletons
 ```
 
-## 🚀 Quick Start
+## 🛠 Basic Usage
 
 ```jsx
 import React from "react";
-import { View } from "react-native";
-import { Skeleton, SkeletonGroup, ContentLoader } from "rn-skeletons";
+import { SkeletonText, SkeletonImage, SkeletonButton } from "rn-skeletons";
 
 function LoadingScreen() {
   return (
     <View>
-      {/* Basic Skeleton */}
-      <Skeleton width={200} height={20} backgroundColor="#E1E9EE" />
+      <SkeletonText lines={3} lineHeight={20} spacing={10} />
 
-      {/* Skeleton Group */}
-      <SkeletonGroup count={3} direction="vertical" spacing={10} />
+      <SkeletonImage width={200} height={200} borderRadius={10} />
 
-      {/* Content Loader */}
-      <ContentLoader avatar={true} lines={3} />
+      <SkeletonButton width="100%" height={50} />
     </View>
   );
 }
 ```
 
-## 🎨 Components
+## 🌈 Comprehensive Component List
 
-### 1. Skeleton
+### 1. Base Skeleton Props
 
-The core component for creating individual skeleton loaders.
+Common props for all skeleton components:
 
-#### Props
+| Prop              | Type                                 | Default     | Description             |
+| ----------------- | ------------------------------------ | ----------- | ----------------------- |
+| `width`           | `number\|string`                     | `'100%'`    | Width of skeleton       |
+| `height`          | `number`                             | `50`        | Height of skeleton      |
+| `backgroundColor` | `string`                             | `'#E1E9EE'` | Background color        |
+| `highlightColor`  | `string`                             | `'#F2F8FC'` | Shimmer color           |
+| `borderRadius`    | `number`                             | `4`         | Corner radius           |
+| `animationType`   | `'shimmer'\|'pulse'\|'fade'\|'none'` | `'shimmer'` | Animation style         |
+| `duration`        | `number`                             | `1500`      | Animation duration (ms) |
+| `style`           | `ViewStyle`                          | `{}`        | Additional styles       |
+| `testID`          | `string`                             | `undefined` | Test identifier         |
 
-- `width`: Width of the skeleton (default: 200)
-- `height`: Height of the skeleton (default: 20)
-- `backgroundColor`: Background color (default: '#E1E9EE')
-- `highlightColor`: Shimmer highlight color (default: '#F2F8FC')
-- `duration`: Animation duration (default: 1000ms)
-- `shape`: Shape type ('rectangle', 'circle', 'square')
-- `isAnimated`: Enable/disable animation (default: true)
-- `borderRadius`: Custom border radius
+### 2. Text Skeleton
 
-#### Example
+Create multi-line text placeholders
 
-```jsx
-<Skeleton width={100} height={100} shape="circle" backgroundColor="#F0F0F0" />
-```
+#### Text Skeleton Props
 
-### 2. SkeletonGroup
-
-Create multiple skeletons with consistent spacing.
-
-#### Props
-
-- `count`: Number of skeletons (default: 1)
-- `spacing`: Space between skeletons (default: 8)
-- `direction`: Layout direction ('vertical' or 'horizontal')
-
-#### Example
+| Prop         | Type             | Default  | Description            |
+| ------------ | ---------------- | -------- | ---------------------- |
+| `lines`      | `number`         | `1`      | Number of text lines   |
+| `lineHeight` | `number`         | `20`     | Height of each line    |
+| `spacing`    | `number`         | `10`     | Space between lines    |
+| `width`      | `number\|string` | `'100%'` | Width of text skeleton |
 
 ```jsx
-<SkeletonGroup count={3} spacing={12} direction="horizontal" />
+<SkeletonText
+  lines={3} // Number of lines
+  lineHeight={20} // Height of each line
+  spacing={10} // Space between lines
+  width="90%" // Width of text
+  backgroundColor="#F0F0F0"
+/>
 ```
 
-### 3. ContentLoader
+### 3. Image Skeleton
 
-A pre-configured skeleton loader for content with avatar and text lines.
+Placeholder for images
 
-#### Props
+#### Image Skeleton Props
 
-- `avatar`: Show/hide avatar skeleton (default: true)
-- `lines`: Number of text lines (default: 3)
-- `avatarSize`: Size of avatar (default: 60)
-- `lineHeight`: Height of each text line (default: 15)
-- `lineSpacing`: Space between lines (default: 8)
-
-#### Example
+| Prop           | Type     | Default | Description   |
+| -------------- | -------- | ------- | ------------- |
+| `width`        | `number` | `200`   | Image width   |
+| `height`       | `number` | `200`   | Image height  |
+| `borderRadius` | `number` | `10`    | Corner radius |
 
 ```jsx
-<ContentLoader avatar={true} lines={2} avatarSize={50} />
+<SkeletonImage
+  width={200} // Image width
+  height={200} // Image height
+  borderRadius={10} // Corner radius
+  animationType="pulse"
+/>
 ```
 
-## 🎭 Shapes and Customization
+### 4. Button Skeleton
 
-The library supports three shapes:
+Placeholder for buttons
 
-- `rectangle` (default)
-- `circle`
-- `square`
+#### Button Skeleton Props
 
-## 🚀 Performance
+| Prop           | Type             | Default  | Description   |
+| -------------- | ---------------- | -------- | ------------- |
+| `width`        | `number\|string` | `'100%'` | Button width  |
+| `height`       | `number`         | `50`     | Button height |
+| `borderRadius` | `number`         | `8`      | Corner radius |
 
-- Utilizes `Animated` API for smooth animations
+```jsx
+<SkeletonButton
+  width="100%" // Button width
+  height={50} // Button height
+  borderRadius={8} // Corner radius
+  backgroundColor="#E0E0E0"
+/>
+```
+
+### 5. Carousel Skeleton
+
+Horizontal/vertical carousel loader
+
+#### Carousel Skeleton Props
+
+| Prop         | Type      | Default | Description         |
+| ------------ | --------- | ------- | ------------------- |
+| `itemCount`  | `number`  | `3`     | Number of items     |
+| `itemWidth`  | `number`  | `200`   | Item width          |
+| `itemHeight` | `number`  | `150`   | Item height         |
+| `horizontal` | `boolean` | `true`  | Scroll direction    |
+| `spacing`    | `number`  | `10`    | Space between items |
+
+```jsx
+<SkeletonCarousel
+  itemCount={3} // Number of items
+  itemWidth={200} // Item width
+  itemHeight={150} // Item height
+  horizontal={true} // Scroll direction
+  spacing={10} // Space between items
+/>
+```
+
+### 6. Review Skeleton
+
+Review card placeholder
+
+#### Review Skeleton Props
+
+| Prop         | Type     | Default | Description          |
+| ------------ | -------- | ------- | -------------------- |
+| `avatarSize` | `number` | `50`    | Size of avatar       |
+| `textLines`  | `number` | `2`     | Number of text lines |
+
+```jsx
+<SkeletonReview
+  avatarSize={50} // Avatar size
+  textLines={2} // Text lines
+  backgroundColor="#F5F5F5"
+/>
+```
+
+### 7. Grid Skeleton
+
+Grid-based layout skeleton
+
+#### Grid Skeleton Props
+
+| Prop         | Type             | Default | Description         |
+| ------------ | ---------------- | ------- | ------------------- |
+| `columns`    | `number`         | `2`     | Number of columns   |
+| `itemHeight` | `number`         | `150`   | Item height         |
+| `spacing`    | `number`         | `10`    | Space between items |
+| `itemWidth`  | `number\|string` | `'45%'` | Width of each item  |
+
+```jsx
+<SkeletonGrid
+  columns={2} // Number of columns
+  itemHeight={150} // Item height
+  spacing={10} // Space between items
+  itemWidth="45%" // Width of grid items
+/>
+```
+
+### 8. List Skeleton
+
+List-based skeleton loader
+
+#### List Skeleton Props
+
+| Prop         | Type     | Default | Description         |
+| ------------ | -------- | ------- | ------------------- |
+| `itemCount`  | `number` | `5`     | Number of items     |
+| `itemHeight` | `number` | `80`    | Height of each item |
+| `spacing`    | `number` | `10`    | Space between items |
+
+```jsx
+<SkeletonList
+  itemCount={5} // Number of items
+  itemHeight={80} // Item height
+  spacing={10} // Space between items
+/>
+```
+
+## 🎨 Advanced Customization
+
+### Animation Control
+
+Customize animation for each skeleton:
+
+```jsx
+<SkeletonText
+  animationType="pulse" // Options: shimmer, pulse, fade, none
+  duration={1500} // Animation duration in ms
+  highlightColor="#E0E0E0"
+/>
+```
+
+## 🌐 Responsive Design
+
+Support for dynamic sizing:
+
+```jsx
+<SkeletonText
+  width="90%" // Percentage width
+  lineHeight={20} // Fixed line height
+/>
+```
+
+## 🚀 Performance Optimization
+
 - Minimal render overhead
-- Configurable animation duration
-- Native driver support
+- Native animation driver
+- Lightweight implementation
+- Efficient memory management
 
-## 🔧 Advanced Customization
+## 🔧 Troubleshooting
 
-Combine components and customize as needed:
-
-```jsx
-function ProfileSkeleton() {
-  return (
-    <View style={styles.container}>
-      <ContentLoader avatar={true} lines={2} avatarSize={70} lineSpacing={10} />
-    </View>
-  );
-}
-```
+- Ensure correct package installation
+- Check React Native version compatibility
+- Verify import statements
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please submit pull requests or open issues on our GitHub repository.
+1. Fork the repository
+2. Create feature branch
+3. Commit changes
+4. Push to branch
+5. Open Pull Request
 
 ## 📄 License
 
-MIT © ahadmagsi
+MIT License
+
+## 📞 Contact
+
+[Your Name/Organization]
+
+- GitHub: [@abahadmagsi](https://github.com/abahadmagsi)
+- Twitter: [@thisisahadmagsi](https://twitter.com/thisisahadmagsi)
 
 ---
 
-Crafted with ❤️ for React Native Developers
+⭐ Star the project if you find it helpful!

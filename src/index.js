@@ -1,3 +1,9 @@
-export { default as Skeleton } from "./components/Skeleton";
-export { default as SkeletonGroup } from "./components/SkeletonGroup";
-export { default as ContentLoader } from "./components/ContentLoader";
+export { default as BaseSkeleton } from "./components/core/BaseSkeleton";
+export {
+  SkeletonText,
+  SkeletonImage,
+  SkeletonButton,
+  SkeletonCarousel,
+  SkeletonReview,
+} from "./components/specialized/SkeletonText";
+export { SkeletonGrid, SkeletonList } from "./components/layout/SkeletonGrid";
