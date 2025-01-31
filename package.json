@@ -1,0 +1,23 @@
+{
+  "name": "rn-skeletons",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native",
+    "skeleton",
+    "loading",
+    "placeholder",
+    "shimmer",
+    "animation"
+  ],
+  "author": "Ahad Magsi",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "react": "^18.3.1",
+    "react-native": "^0.77.0"
+  }
+}
